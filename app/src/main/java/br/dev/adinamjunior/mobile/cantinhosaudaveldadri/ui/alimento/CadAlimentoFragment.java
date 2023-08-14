@@ -2,6 +2,7 @@ package br.dev.adinamjunior.mobile.cantinhosaudaveldadri.ui.alimento;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ public class CadAlimentoFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private View view = null;
 
     public CadAlimentoFragment() {
         // Required empty public constructor
@@ -51,16 +53,17 @@ public class CadAlimentoFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        ((AppCompatActivity)getActivity()).getSupportActionBar()
+                .setDisplayShowCustomEnabled(false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar()
+                .setDisplayHomeAsUpEnabled(false);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cad_alimento, container, false);
+        this.view = inflater.inflate(R.layout.fragment_cad_alimento, container, false);
+        return this.view
     }
 }
